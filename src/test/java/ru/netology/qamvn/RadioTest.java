@@ -17,7 +17,7 @@ public class RadioTest {
     }
 
     @Test
-    public void ShouldSetCurrentStationLessThanTheMinimum() {
+    public void ShouldSetCurrentStationLessThanMinimum() {
         Radio radio = new Radio();
 
         radio.setCurrentStation(-6);
@@ -152,6 +152,61 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    ////Тесты для предыдущей станции
+    @Test
+    public void ShouldSetCurrentStationPrev1() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(6);
+        radio.prev();
+        int expected = 5;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldSetCurrentStationPrev2() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(0);
+        radio.prev();
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldSetCurrentStationPrev3() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(1);
+        radio.prev();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldSetCurrentStationPrev4() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(9);
+        radio.prev();
+        int expected = 8;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldSetCurrentStationPrev5() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(8);
+        radio.prev();
+        int expected = 7;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
     ////////////Тесты для звука
     @Test
@@ -246,7 +301,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    /////
+    /////Звук увеличение
 
     @Test
     public void ShouldSetCurrentVolumeIncrease1() {
