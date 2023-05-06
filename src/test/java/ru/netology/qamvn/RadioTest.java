@@ -5,7 +5,19 @@ import org.junit.jupiter.api.Test;
 
 
 public class RadioTest {
+    //////////////////Тесты для конструктора c параметром///////////
 
+    @Test
+    public void test1() {
+        Radio radio = new Radio(20);
+
+        radio.setCurrentStation(18);
+        int expected = 18;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    //////////////////Тесты для конструктора без параметра///////////
     @Test
     public void ShouldSetCurrentStationAverage() {
         Radio radio = new Radio();

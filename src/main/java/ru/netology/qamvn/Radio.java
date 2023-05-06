@@ -1,11 +1,23 @@
 package ru.netology.qamvn;
 
 public class Radio {
+    private int maxStation;
     private int currentStation;
     private int currentVolume;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+
+    public Radio() {
+        this.maxStation = 9;
+
+    }
+
+    public Radio(int stationCount) {
+        this.maxStation = stationCount - 1;
+    }
 
     public void next() {
-        if (currentStation != 9) {
+        if (currentStation != maxStation) {
             currentStation++;
         } else {
             currentStation = 0;
@@ -16,7 +28,7 @@ public class Radio {
         if (currentStation != 0) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 
@@ -28,7 +40,7 @@ public class Radio {
         if (currentStation < 0) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation > maxStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -52,13 +64,13 @@ public class Radio {
     public void increaseVolume() {
         if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
-        }
+        } else currentVolume = maxVolume;
     }
 
     public void lowerVolume() {
         if (currentVolume != 0) {
             currentVolume = currentVolume - 1;
-        }
+        } else currentVolume = minVolume;
     }
 }
 
